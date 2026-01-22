@@ -1,10 +1,37 @@
-import "./App.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
+// import PrivateRoute from "./components/PrivateRoute";
+import Login from "./pages/Login";
+import PrivateRoute from "./components/PrivateRoute";
+import Dashboard from "./pages/Dashboard";
+// import Dashboard from "./pages/Dashboard";
+// import LoadingSpinner from "./components/LoadingSpinner";
 
 function App() {
   return (
-    <>
-      <p className="text-5xl">hello world</p>
-    </>
+    <Router>
+      <AuthProvider>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+
+          <Route path="/" element={<Navigate to="/dashboard" />} />
+        </Routes>
+      </AuthProvider>
+    </Router>
   );
 }
 
