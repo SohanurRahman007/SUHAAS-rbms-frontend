@@ -113,7 +113,7 @@ const Invite = () => {
           </form>
         </Card>
 
-        {/* Invite Information & Preview */}
+        {/* Invite Information */}
         <Card>
           <h3 className="text-lg font-semibold mb-4">How It Works</h3>
 
